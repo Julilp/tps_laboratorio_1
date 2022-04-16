@@ -16,13 +16,10 @@ void menu(void)
 	setbuf(stdout, NULL);
 	int banderaautenticacion=0;
 	int opciones;
-	// variable para manejar el menu
+	int subOpcion;
 	float x =0;
-	// variable  para los KM
 	float y =0;
-	//variable del precio de aerolineas
 	float z =0;
-	// variable del precio de latam
 
 	float precioDebitoAerolineas;
 	float precioCreditoAerolineas;
@@ -64,9 +61,27 @@ void menu(void)
 			espaciarLaConsola();
 		break;
 		case 2:
-			y =solicitarDato("ingrese precio de vuelo Aerolineas");
-			z =solicitarDato("ingrese precio de vuelo LATAM");
+			printf("1- Ingresar Precio Aerolíneas \n");
+			printf("2- Ingresar Precio Latam\n");
+			scanf("%d", &subOpcion);
+
+			if(subOpcion == 1)
+			{
+				y = solicitarDato("Precio de vuelo (Aerolíneas):\n ");
+			}
+			else
+			{
+				if(subOpcion == 2)
+				{
+					z = solicitarDato("Precio de vuelo (Latam):\n ");
+				}
+				else
+				{
+					printf("Opción inválida, ingrese 1 o 2\n");
+				}
+			}
 			espaciarLaConsola();
+
 		break;
 		case 3:
 			if (x ==0||y==0||z==0)
