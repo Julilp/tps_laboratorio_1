@@ -8,11 +8,8 @@
  ============================================================================
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
-#include "ArrayPassenger.h"
+
+#include "Nexo.h"
 #define TAM 2000
 int main(void)
 {

@@ -75,7 +75,7 @@ int controller_addPassenger(LinkedList* pArrayListPassenger)
 	Passenger* nuevoPasajero=NULL;
 
 	if(pArrayListPassenger != NULL){
-		pedirCadena(nombre, "Ingrese el nombre del pasajero: ", "Solo puede ingresar letras: ", 50,1);
+		pedirCadena(nombre, "Ingrese el nombre del pasajero: ", "ERROR solo puede ingresar letras: ", 50,1);
 		pedirCadena(apellido, "Ingrese el apellido del pasajero: ", "Solo puede ingresar letras: ", 50,1);
 		utn_getFloat(&precio, "Ingrese el precio del pasaje", "No esta dentro de los parametros (10.000 y 100.000)", 10000, 100000, 5);
 		pedirEntero(&tipoPasajero, "Elegir su clase de vuelo:\n1.Primera Clase\n2.Clase Turista\n3.Clase Economica", "tiene que elegir una de las opciones:\n1.Primera Clase\n2.Clase Turista\n3.Clase Economica",1,3);

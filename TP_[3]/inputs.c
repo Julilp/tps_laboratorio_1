@@ -40,7 +40,7 @@ int pedirCadena(char* cadena, char* mensaje, char* mensajeError, int max, int va
 	int retorno = -1;
 	char buffer[256];
 	int tam;
-	int validacion=-1;
+	int validacion;
 
 	if(cadena != NULL && mensaje != NULL && mensajeError != NULL && max > 0)
 	{
@@ -49,17 +49,14 @@ int pedirCadena(char* cadena, char* mensaje, char* mensajeError, int max, int va
 		scanf("%[^\n]", buffer);
 		tam = strlen(buffer);
 		if(val==1){
-
-			do{
-				validacion=validacionDeCaracteres(buffer);
+			validacion=validacionDeCaracteres(buffer);
+			while(validacion==-1){
 				printf("%s", mensajeError);
 				fflush(stdin);
 				scanf("%[^\n]", buffer);
-			}while(validacion==0);
+				validacion=validacionDeCaracteres(buffer);
+			}
 		}
-
-
-
 		while(tam > max)
 		{
 			printf("%s", mensajeError);
@@ -297,11 +294,16 @@ int validacionDeCaracteres (char* cadena)
 {
 	int size = strlen(cadena);
 	int validacion=-1;
+
 	for(int i=0;i<size;i++)
 	{
-		if (isdigit(cadena[i]))
+		if((*(cadena+i) > 64 &&*(cadena+i) < 91) || (*(cadena+i) > 96 &&*(cadena+i) < 123))
 		{
 			validacion=0;
+		}
+		else{
+			validacion=-1;
+			break;
 		}
 	}
 	return validacion;

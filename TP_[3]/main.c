@@ -80,30 +80,16 @@ int main()
             	else {
             		printf("debes cargar un archivo para mostrarlo");
             	}
-
             break;
             case 7:
-            	controller_sortPassenger(listaPasajeros,tiposPasajeros);
+            		controller_sortPassenger(listaPasajeros,tiposPasajeros);
             break;
             case 8:
-            	if(loadFlag==0){
 					controller_saveAsText("data.csv", listaPasajeros);
-				}
-            	else{
-            		printf("Primero debe cargar el archivo\n1");
-            	}
             break;
             case 9:
-            	if(loadFlag==0){
             		controller_saveAsBinary("data.bin", listaPasajeros);
-            	}
-            	else{
-					printf("Primero debe cargar el archivo\n");
-				}
              break;
-
-
-
         }
     }while(option != 10);
     printf("saliendo.....");

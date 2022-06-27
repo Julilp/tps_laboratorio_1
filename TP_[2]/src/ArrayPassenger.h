@@ -10,6 +10,9 @@
 #define TAM 2000
 #define LLENO 1
 #define VACIO 0
+#include "inputs.h"
+#include "funcionesmias.h"
+#include "typePassenger.h"
 struct
 {
 	int id;
@@ -22,24 +25,8 @@ struct
 	int idStatusFlight;
 }typedef Passenger;
 
-struct
-{
-	int idtypePassenger;
-	char typePassenger[20];
-}typedef eTypePassenger;
-
-struct
-{
-	int idStatusFlight;
-	char StatusFlight[20];
-}typedef eStatusFlight;
-
-
 
 Passenger listaDePasajeros[TAM];
-
-
-
 //------FUNCIONES OBLIGATORIAS------//
 /// @brief
 /// esta funcion lo que hace es recorrer el array cambiando el valor de isEmpy para que este quede en vacio
@@ -80,128 +67,36 @@ int removePassenger(Passenger listaDePasajeros[], int tam, int id);
 /// @param order
 /// @return
 int sortPassengers(Passenger listaDePasajeros[], int len, int order);
-/// @brief
-/// repite una funcion para poder mostrar todos los pasajeros
+/// @brief recorre la lista de pasajeros y devuelve la primer posicion vacia
+///
 /// @param listaDePasajeros
-/// @param estadodevueloid
-/// @param typeid
 /// @param tam
-void printPassenger(Passenger listaDePasajeros[],eStatusFlight estadodevueloid[],eTypePassenger typeid[], int tam);
-
-
-
-//------FUNCIONES PARTICULARES------//
-/// @brief
-/// pide un entero y valida que este entre
-/// @param mensaje
-/// @param min
-/// @param max
 /// @return
-int IngresarEntero(char mensaje [], int min, int max);
-/// @brief
-/// muestra espacios en la consola si se acomoda la consola
-void espaciarLaConsola(void);
-/// @brief
-/// pide todos los datos de la estructura y se los pasa a addPassenger
-/// @param listaDePasajeros
-/// @param tam
-void pedirDatos (Passenger listaDePasajeros[],int tam);
-/// @brief
-/// valida que solo se usen caracteres dentro de una cadena
-/// @param cadena
-/// @return
-int validacionDeCaracteres (char cadena[]);
-/// @brief
-/// recorre el array y vusca un espacio libre
-/// @param listaDePasajeros
-/// @param tam
-/// @return devuelve el espacio libre
 int buscarEspacioLibre(Passenger listaDePasajeros[], int tam);
-/// @brief
-/// genera un id de manera autoincremental automaticamente
-/// @return
-int obtenerID();
-/// @brief
-/// muestra un sub menu que da opcion al usuario en que dato modificar
+/// @brief te muestra un sub menu para modificar todos los pasajeros
+///
 /// @param listaDePasajeros
 /// @param tam
 /// @return
 int modificarPasajero(Passenger listaDePasajeros[],int tam);
-/// @brief
-/// validaq que solo se usen numeros en una cadena
-/// @param numeros
-/// @return
-int validarNumero (char numeros[]);
-/// @brief
-///pone las mayusculas cuando detecta un espacio o el inicioi de una palabra
-/// @param cadena
-void Mayuscula (char cadena []);
-/// @brief
-/// pide un flotante y valida que este sean todos numeros
-/// @param mensaje
-/// @param mensajeError
-/// @return
-float pedirFlotante(char mensaje[], char mensajeError[]);
-/// @brief
-/// pide una cadena y valida que todos los caracteres sea letras
-/// @param cadena
-/// @param mensaje
-/// @param mensajeError
-/// @param validar
-/// @return
-int pedirCadena(char* cadena, char* mensaje, char* mensajeError, int validar);
-/// @brief
-/// muestra 1 solo pasajero con la estructura de una tabla
-/// @param listaDePasajeros
-/// @param estadodevueloid
-/// @param typeid
-/// @param tam
-void mostrarUnPasajero(Passenger listaDePasajeros,eStatusFlight estadodevueloid[],eTypePassenger typeid[], int tam);
-/// @brief
-/// recibe el id del estado de vuelo y lo compara con la estructura del estado de vuelo para poder mostrar el tipo y no el id
-/// @param listaDePasajeros
-/// @param typeid
-/// @param tam
-/// @return
-int descripcionTypePassengerr(Passenger listaDePasajeros,eTypePassenger typeid[], int tam);
-/// @brief
-///recibe el id del tipo de pasajero y lo compara con la estructura del estado de vuelo para poder mostrar el tipo y no el id
-/// @param listaDePasajeros
-/// @param estadodevueloid
-/// @param tam
-/// @return
-int descripcionStatusFlight(Passenger listaDePasajeros,eStatusFlight estadodevueloid[], int tam);
-/// @brief
-/// carga de manera automatica 4 personas con todos sus datos
-/// @param listaDePasajeros
-/// @param tam
-void cargaForzada (Passenger listaDePasajeros[], int tam);
-/// @brief
-/// abre un sub menu para que el usuario pueda indicar que es lo que quiere que se le informe
-/// @param listaDePasajeros
-/// @param estadodevueloid
-/// @param typeid
-/// @param tam
-void informar(Passenger listaDePasajeros[],eStatusFlight estadodevueloid[],eTypePassenger typeid[], int tam);
-/// @brief
-/// calcula el total y promedio de los costos de vuelo
+/// @brief calcula el promedio y total de los datos
+///
 /// @param listaDePasajeros
 /// @param tam
 void totalYPromedio(Passenger listaDePasajeros[],int tam);
-/// @brief
-/// ordena a los pasajeros por codigo de vuelo
+/// @brief  ordena a toda la lista por codigo de vuelo
+///
 /// @param listaDePasajeros
 /// @param tam
 void ordenarPorCodDeVuelo (Passenger listaDePasajeros[], int tam);
-/// @brief
-/// muestra unicamente los vuelos que estan EN HORARIO
+/// @brief pide todos los datos necesarios para cargar un pasajero y luego los pasa a otra funcion que los cargue
+///
 /// @param listaDePasajeros
 /// @param tam
-/// @param statusFlight
-/// @param statusTam
-/// @param typePassenger
-/// @param typeTam
-void mostrarVueloValido(Passenger listaDePasajeros[], int tam, eStatusFlight statusFlight[], int statusTam, eTypePassenger typePassenger[], int typeTam);
-
-
+void pedirDatos (Passenger listaDePasajeros[],int tam);
+/// @brief carga algunos pasajeros con datos ya asignados
+///
+/// @param listaDePasajeros
+/// @param tam
+void cargaForzada (Passenger listaDePasajeros[], int tam);
 #endif /* ARRAYPASSENGER_H_ */
